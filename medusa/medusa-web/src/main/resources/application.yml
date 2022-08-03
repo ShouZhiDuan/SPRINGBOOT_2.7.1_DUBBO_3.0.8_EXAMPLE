@@ -1,0 +1,42 @@
+server:
+   port: 8080
+
+spring:
+  application:
+    name: medusa-consumer
+
+# Log Config
+logging:
+ level:
+   root: info
+ file:
+   name: /var/logs/medusa-web/medusa_web.log
+ logback:
+   rollingpolicy:
+     file-name-pattern: /var/logs/medusa-web/medusa_web-%d{yyyy-MM-dd}.%i.log
+     clean-history-on-start: false
+     max-file-size: 600MB
+     total-size-cap: 5GB
+     max-history: 7
+
+dubbo:
+  application:
+    name: ${spring.application.name}
+    #register-mode: instance
+    qos-enable: false
+    qos-accept-foreign-ip: false
+  protocol:
+    name: dubbo
+    port: 30880
+  registry:
+    address: ${NACOS_ADDR:nacos://192.168.10.24:18888}
+    timeout: 30000
+    username: ${NACOS_USERNAME:nacos}
+    password: ${NACOS_PASSWORD:nacos}
+    parameters:
+      namespace: ${NACOS_NAMESPACE:medusa_skadi_dev}
+      group: ${NACOS_GROUP:medusa_skadi_group}
+
+# Dubbo Registry Config
+# Refer to https://dubbo.apache.org/zh/docs/v2.7/user/examples/set-host/#m-zhdocsv27userexamplesset-host
+#DUBBO_IP_TO_REGISTRY: ${DUBBO_DOCKER_HOST_IP:192.168.50.175 }

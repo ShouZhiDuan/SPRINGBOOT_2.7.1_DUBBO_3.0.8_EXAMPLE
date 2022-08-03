@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  localnet:
+    external:
+      name: localnet
+
+services:
+  MEDUSA_SERVER_PROVIDER_SERVICE:
+    env_file:
+      - .env
+    image: ${APP_IMAGE}
+    container_name: ${CONTAINER_NAME}
+    networks:
+      - localnet
+    ports:
+      - ${HOST_PORT}:${DOCKER_PORT}
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ${HOST_LOG_PATH}:${CONTAINER_LOG_PATH} # 日志输出目录
+      - $PWD/jvm/heap:/jvm/heap # 内存堆日志
+      - $PWD/jvm/log:/jvm/log # GC日志

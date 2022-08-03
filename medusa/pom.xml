@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.nvclouds</groupId>
+        <artifactId>medusa-skadi</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.nvclouds</groupId>
+    <artifactId>medusa</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modelVersion>4.0.0</modelVersion>
+    <name>medusa</name>
+    <description>new medusa</description>
+
+    <modules>
+        <module>medusa-api</module>
+        <module>medusa-web</module>
+        <module>medusa-server</module>
+    </modules>
+
+</project>
